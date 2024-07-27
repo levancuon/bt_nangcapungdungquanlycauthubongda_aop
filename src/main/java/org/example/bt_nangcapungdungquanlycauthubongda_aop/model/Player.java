@@ -36,6 +36,7 @@ public class Player {
 
     @NotBlank(message = "Không được để trống vị trí")
     private String position;
+
     @Column(nullable = false)
     private String status;
 

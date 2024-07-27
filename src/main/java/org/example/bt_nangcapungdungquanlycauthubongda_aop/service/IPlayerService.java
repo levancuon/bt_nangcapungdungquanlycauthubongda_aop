@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface IPlayerService {
     Page<Player> findAll(int page, int size, String sort, String name, LocalDate dobMin, LocalDate dobMax);
 
-    Optional<Player> findById(Long id);
+   Player findById(Long id);
 
     void save(Player player);
     void remove(Long id);

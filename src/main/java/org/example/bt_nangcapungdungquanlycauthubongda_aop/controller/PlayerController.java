@@ -55,9 +55,9 @@ public class PlayerController {
 
     @GetMapping("/detail/{id}")
     public String detail(@PathVariable("id") Long id, Model model) {
-        Optional<Player> player = playerService.findById(id);
-        if (player.isPresent()) {
-            model.addAttribute("player", player.get());
+        Player player = playerService.findById(id);
+        if (player!=null) {
+            model.addAttribute("player", player);
             return "/player/detail";
         }
         return "redirect:/player";
@@ -82,9 +82,9 @@ public class PlayerController {
 
     @GetMapping("/edit/{id}")
     public String edit( @PathVariable("id") Long id, Model model) {
-        Optional<Player> player = playerService.findById(id);
-        if (player.isPresent()) {
-            model.addAttribute("player", player.get());
+       Player player = playerService.findById(id);
+        if (player!=null) {
+            model.addAttribute("player", player);
             return "/player/edit";
         }
         return "redirect:/list";

@@ -58,8 +58,8 @@ public class PlayerService implements IPlayerService {
     }
 
     @Override
-    public Optional<Player> findById(Long id) {
-        return playerRepo.findById(id);
+    public Player findById(Long id) {
+        return playerRepo.findById(id).orElse(null);
     }
 
     @Override
