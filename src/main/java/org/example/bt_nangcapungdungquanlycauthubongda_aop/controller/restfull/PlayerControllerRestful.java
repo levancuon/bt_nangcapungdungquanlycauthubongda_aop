@@ -24,7 +24,7 @@ public class PlayerControllerRestful {
     @Autowired
     private IPlayerService playerService;
 
-    @GetMapping("/players")
+    @GetMapping("/list")
     public ResponseEntity<?> players(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
