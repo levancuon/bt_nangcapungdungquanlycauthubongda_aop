@@ -24,7 +24,7 @@ public class PlayerControllerRestful {
     @Autowired
     private IPlayerService playerService;
 
-    @GetMapping("")
+    @GetMapping("/players")
     public ResponseEntity<?> players(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
@@ -36,13 +36,13 @@ public class PlayerControllerRestful {
         return new ResponseEntity<>(players, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{id}/delete")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         playerService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/player")
     public ResponseEntity<Player> findById(@PathVariable("id") Long id) {
         Player player = playerService.findById(id);
         if (player != null) {
@@ -51,7 +51,7 @@ public class PlayerControllerRestful {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<?> create(@Validated @RequestBody Player player, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -60,7 +60,7 @@ public class PlayerControllerRestful {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/edit")
     public ResponseEntity<?> edit(@PathVariable("id") Long id, @Validated @RequestBody Player player, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             Map<String, String> errors = new HashMap<>();
